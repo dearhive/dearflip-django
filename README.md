@@ -99,12 +99,12 @@ Create `templates/pdf_viewer.html`:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Viewer with dFlip</title>
     
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
     <!-- dFlip CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'dflip/css/dflip.min.css' %}">
     
+    <!-- jQuery -->
+    <script src="{% static 'dflip/js/libs/jquery.min.js' %}"></script>
+        
     <!-- dFlip JavaScript -->
     <script src="{% static 'dflip/js/dflip.min.js' %}"></script>
 </head>
@@ -113,12 +113,13 @@ Create `templates/pdf_viewer.html`:
         <h1>PDF Viewer</h1>
         
         <!-- PDF display container -->
-        <div class="_df_book" id="pdf-container" 
-             source="{{ pdf_url }}"
-             data-height="500"
-             data-width="auto"
-             data-auto-sound="true">
-        </div>
+        <div class="_df_book" data-option="dflipOptions" id="pdf-container"></div>
+        <script>
+            window.dflipOptions = {
+                source: "{% static 'pdf/the-three-musketeers.pdf' %}"
+                // for more options visit https://js.dearflip.com/docs
+            }
+        </script>
     </div>
 </body>
 </html>
@@ -134,10 +135,10 @@ from django.conf import settings
 
 def pdf_viewer(request):
     # Path to the sample PDF, relative to the static directory
-    pdf_url = settings.STATIC_URL + 'pdf/your-sample-pdf.pdf'
+    # pdf_url = settings.STATIC_URL + 'pdf/your-sample-pdf.pdf'
     
     context = {
-        'pdf_url': pdf_url,
+        # pdf_url
     }
     
     return render(request, 'pdf_viewer.html', context)
