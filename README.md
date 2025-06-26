@@ -4,6 +4,29 @@ This project demonstrates how to integrate the DearFlip PDF viewer into a Django
 
 ## Setup Instructions
 
+### Option 1: Clone this repository (Quick Start)
+
+If you want to quickly examine the implementation:
+
+```bash
+
+# Clone the repository
+git clone https://github.com/dearhive/dearflip-django.git
+cd dearflip-django
+
+# Install django
+pip install django
+
+# Migrate and Run
+python manage.py migrate
+python manage.py runserver
+
+Visit http://127.0.0.1:8000/ to see your PDF displayed with DearFlip.
+
+```
+
+### Option 2: Manual Setup
+
 ### 1. Install Django
 
 ```bash
@@ -20,7 +43,7 @@ python manage.py startapp pdfviewer
 
 ### 3. Include DearFlip Resources
 
-1. Download DearFlip from the official website or add it to your project
+1. Download DearFlip from the [official website](https://js.dearflip.com/) and add it to your project
 2. Create a structure like this:
 ```
 public/
@@ -35,7 +58,7 @@ public/
 
 ### 4. Configure Django Settings
 
-Add the following to your `settings.py`:
+Add the following to your `your_project/settings.py`:
 
 ```python
 INSTALLED_APPS = [
